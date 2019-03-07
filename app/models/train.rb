@@ -6,4 +6,13 @@ class Train < ApplicationRecord
   has_many :tickets
   has_many :wagons
 
+#   before_validation :set_number
+#
+#   private
+#
+#   NUMBER = 1
+#   def set_number
+#
+#     self.number = "#{ wagons.number += 1}"
+#   end
 end

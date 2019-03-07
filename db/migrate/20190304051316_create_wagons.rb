@@ -1,8 +1,14 @@
 class CreateWagons < ActiveRecord::Migration[5.2]
   def change
     create_table :wagons do |t|
-      t.integer :wagon_type, default: 0
+      t.integer :number
+      t.integer :seats
+      t.integer :top_seats
+      t.integer :bottom_seats
+      t.integer :side_top_seats
+      t.integer :side_bottom_seats
       t.belongs_to :train
+      t.string :type
       t.timestamps
     end
   end

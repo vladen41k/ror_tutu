@@ -1,5 +1,9 @@
 class Wagon < ApplicationRecord
-  validates :wagon_type, presence: true
+  validates :number, :top_seats, :bottom_seats, presence: true
   belongs_to :train
-  enum wagon_type: %i[coupe reserved_seat]
+  # default_scope { order(:number) }
+
+  scope :economy, -> { where(type: 'EconomyCarriage') }
+  scope :coupe, -> { where(type: 'CoupeCarriage') }
+  scope :ordered, -> { order(:number) }
 end

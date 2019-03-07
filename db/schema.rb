@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_051316) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
+    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -21,10 +22,13 @@ ActiveRecord::Schema.define(version: 2019_03_04_051316) do
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "number_railway_station_id"
+    t.integer "number_route_id"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "name"
+    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,8 +49,8 @@ ActiveRecord::Schema.define(version: 2019_03_04_051316) do
     t.integer "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "route_id"
     t.integer "current_station_id"
+    t.integer "route_id"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
     t.index ["ticket_id"], name: "index_trains_on_ticket_id"
@@ -61,8 +65,14 @@ ActiveRecord::Schema.define(version: 2019_03_04_051316) do
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.integer "wagon_type", default: 0
+    t.integer "number"
+    t.integer "seats"
+    t.integer "top_seats"
+    t.integer "bottom_seats"
+    t.integer "side_top_seats"
+    t.integer "side_bottom_seats"
     t.integer "train_id"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["train_id"], name: "index_wagons_on_train_id"
