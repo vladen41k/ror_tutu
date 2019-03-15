@@ -2,7 +2,7 @@
 
 <p>
   <strong>Тип вагона:</strong>
-  <%= @wagon.wagon_type %>
+  <%= @wagon.type %>
 </p>
 
 <p>
@@ -14,6 +14,26 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Тип вагона:</strong>
+  <% if @wagon.type.present? %>
+    <%= @wagon.type %>
+  <% else%>
+    Не указанно
+  <% end %>
+</p>
 
-<%= link_to 'Изменить', edit_wagon_path(@wagon) %> |
-<%= link_to 'Назад', wagons_path %>
+<ul>
+<% @wagon.attributes.slice('seats', 'top_seats', 'bottom_seats',
+                           'side_bottom_seats', 'side_top_seats').each do |i| %>
+    <% if i[1] == nil %>
+      <li><%=  i[0]%> - <%=  'Не указанно' %></li>
+    <% else %>
+      <li><%=  i[0]%> - <%=  i[1]%></li>
+    <% end %>
+<% end %>
+</ul>
+
+
+<%= link_to 'Изменить', edit_train_wagon_path(@train.id, @wagon) %> |
+<%= link_to 'Назад', train_wagons_path %>

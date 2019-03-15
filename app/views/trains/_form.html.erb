@@ -19,6 +19,16 @@
     <%= form.collection_select :route_id, Route.all, :id, :name %>
   </div>
 
+  <div class="field">
+   <p>Нумерация - <%= @train.boolean_id %></p>
+    <%= form.label :route, "Направление вагонов" %>
+    <%= form.select :boolean_id, options_for_select([['Голова', true], ['Хвост', false]], @train.boolean_id )  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :route, "Текущий маршрут" %>
+  </div>
+
   <div class="actions">
     <%= form.submit  if @train.new_record? ? 'Создать' : 'Изменить' %>
   </div>

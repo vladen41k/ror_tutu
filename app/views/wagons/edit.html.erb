@@ -2,5 +2,5 @@
 
 <%= render 'form'%>
 
-<%= link_to 'Показать', @wagon %>
-<%= link_to 'Назад', wagon_path %>
+<%= link_to 'Показать', train_wagon_url(@train.id) %>
+<%= link_to 'Назад', train_wagons_path %>

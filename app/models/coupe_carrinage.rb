@@ -1,2 +1,0 @@
-class CoupeCarriage < Wagon
-end

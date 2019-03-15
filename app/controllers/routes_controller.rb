@@ -1,12 +1,17 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:edit, :show, :update, :destroy]
+  before_action :set_route, only: [:edit, :update, :destroy, :update_positions]
 
   def index
     @routes = Route.all
   end
 
   def show
+    @route = Route.find(params[:id])
+    @railway_stations_routes = RailwayStationsRoute.where(route_id: @route.id,
+                                                          railway_station_id: @route.railway_stations.pluck(:id))
+                                   .includes(:railway_station).order(:position)
   end
+
 
   def new
     @route = Route.new
@@ -22,7 +27,16 @@ class RoutesController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
+
+  def update_positions
+    if valid_positions?
+      RailwayStationsRoute.update(params['railway_stations_routes'].keys,
+                                  params['railway_stations_routes'].values)
+    else
+
+    end
+    redirect_to @route
   end
 
   def update
@@ -39,6 +53,11 @@ class RoutesController < ApplicationController
   end
 
   private
+
+  def valid_positions?
+    positions = params['railway_stations_routes'].values
+    positions.map { |p| p[:position] }.uniq!.nil?
+  end
 
   def set_route
     @route = Route.find(params[:id])

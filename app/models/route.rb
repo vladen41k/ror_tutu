@@ -6,7 +6,7 @@ class Route < ApplicationRecord
   validate :stations_count
 
   before_validation :set_name
-  before_validation :set_number
+
 
   private
 
@@ -14,9 +14,7 @@ class Route < ApplicationRecord
     self.name = "#{railway_stations.first.title} - #{railway_stations.last.title }"
   end
 
-  def set_number
-    self.name = "#{ railway_stations.number }"
-  end
+
 
   def stations_count
     if railway_stations.size < 2

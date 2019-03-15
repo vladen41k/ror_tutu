@@ -1,4 +1,4 @@
-<%= form_with(model: @wagon, local: true) do |form| %>
+<%= form_with(model: @wagon, url: train_wagons_path(@train.id), local: true) do |form| %>
   <% if @wagon.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@wagon.errors.count, "error") %> prohibited this railway_station from being saved:</h2>
@@ -12,14 +12,35 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :wagon_type %>
-    <%= form.text_field :wagon_type %>
+    <%= form.label 'Тип вагона'%>
+    <div class="field_type">
+      <%= form.label 'Электричка. Только сидячие места.'%>
+      <%= form.radio_button "type", "SeatsCarriage" %>
+    </div>
+    <div class="field_type">
+      <%= form.label 'Плацкард. Все, кроме идячих.'%>
+      <%= form.radio_button "type", "EconomyCarriage" %>
+    </div>
+    <div class="field_type">
+      <%= form.label 'Купе. Только верхние и нижние места.'%>
+      <%= form.radio_button "type", "CoupeCarriage" %>
+    </div>
+    <div class="field_type">
+      <%= form.label 'СВ. Только нижние места'%>
+      <%= form.radio_button "type", "SvCarriage" %>
+    </div>
+    <%= form.label 'Седячие места (Электричка)'%>
+    <%= form.text_field :seats %>
+    <%= form.label 'Нижнте места'%>
+    <%= form.text_field :bottom_seats %>
+    <%= form.label 'Верхние места'%>
+    <%= form.text_field :top_seats %>
+    <%= form.label 'Нижие места сбоку (Эконом)'%>
+    <%= form.text_field :side_bottom_seats %>
+    <%= form.label 'Верхние места сбоку (Эконом)'%>
+    <%= form.text_field :side_top_seats %>
   </div>
 
-  <div class="field">
-    <%= form.label :train %>
-    <%= form.collection_select :train_id, Train.all, :id, :number%>
-  </div>
 
   <div class="actions">
     <%= form.submit  if @wagon.new_record? ? 'Создать' : 'Изменить' %>

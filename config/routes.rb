@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  resources :trains
-  resources :railway_stations
-  resources :routes
+  resources :trains do
+    resources :wagons
+  end
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
+  resources :routes do
+    patch 'update_position', to: 'routes#update_positions', on: :member
+  end
   resources :tickets
   resources :users
-  resources :wagons
+  resource :search, only: [:new, :show, :edit]
   get 'welcome/index'
 
   root 'welcome#index'
