@@ -11,12 +11,22 @@
   </head>
 
   <body>
+    <p id="notice" class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <%= link_to 'Выйти', destroy_user_session_path, method: :delete%>
+  <p> Аккаунт: <%= current_user.email %></p>
+    <% else %>
+      <%= link_to 'Войти', new_user_session_path %>
+    <% end %>
     <%= yield %>
   <footer class="container">
     <div class="row">
       <div class="col fixed-bottom text-center">
         <h2>"(с) Егошин Владислав"</h2>
         <p>Учебный проект</p>
+        <p><%= link_to 'На главную', welcome_index_path%></p>
       </div>
     </div>
   </footer>

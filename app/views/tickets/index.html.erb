@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('ticket.tickets') %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th><%= t('ticket.tickets') %></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.first_name_id %></td>
+      <td><%= ticket.middle_name_id %></td>
+      <td><%= ticket.last_name_id %></td>
+      <td><%= ticket.train.number %></td>
+      <td><%= link_to t('common.show'), ticket_path(ticket) %></td>
+      <td><%= link_to t('common.delete'), ticket_path(ticket), method: :delete, data: { confirm: "#{t('common.delete')}?" } %></td>
+    </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('common.new') , search_path %>

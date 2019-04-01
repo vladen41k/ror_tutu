@@ -1,0 +1,37 @@
+<h3>Поиск билетов</h3>
+<% flash.each do |key, message| %>
+  <p class="<%= key %>"><%= message %></p>
+<% end %>
+<h1><%= params[:some] %></h1>
+<p>
+  <%= form_with url: search_path, method: :get, local: true, class: 'search_form' do|f| %>
+    <%= f.collection_select :start_station_id, RailwayStation.all, :id, :title, { selected: params[:start_station_id] } %>
+    <%= f.collection_select :end_station_id, RailwayStation.all, :id, :title, { selected: params[:end_station_id] } %>
+    <%= f.submit 'Найти' %>
+  <% end %>
+</p>
+<table>
+<!--  <tr>-->
+    <%# if @trains.present? %>
+      <%# @trains.each do |train| %>
+<!--        <td><%#= train.number %></td>-->
+      <%# end %>
+    <%#end %>
+<!--  </tr>-->
+  <tr>
+    <% if @trains.present? %>
+      <% @trains.each do |train| %>
+        <td><%= train.number %></td>
+        <td> Время отправки: <%= RailwayStationsRoute.find_by(railway_station_id: params[:start_station_id],
+                                                              route_id: train.route_id).try(:arrival_time) %></td>
+
+        <td> Время прибытия: <%= RailwayStationsRoute.find_by(railway_station_id: params[:end_station_id],
+                                                              route_id: train.route_id).try(:dispatch_time) %></td>
+
+        <td> <%= link_to "Купить билет", new_ticket_path('ticket[train_id]' =>  train.id,
+                                                         'ticket[start_station_id]' => params[:start_station_id],
+                                                         'ticket[end_station_id]' => params[:end_station_id]) %></td>
+      <% end %>
+    <%end %>
+  </tr>
+</table>

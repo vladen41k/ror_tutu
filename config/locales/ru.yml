@@ -1,0 +1,43 @@
+ru:
+  forgot_your_password?: 'Забыли пароль?'
+  email: 'Электронная почта'
+  sign_in: 'Войти'
+  create_account: 'Создать аккаунт'
+  didnt_receive_confirmation_instructions?: 'Не получили подтверждение инструкции?'
+  didnt_receive_unlock_instructions?: 'Не получили инструкции по разблокировке?'
+  ticket:
+    tickets: 'Билеты'
+    mail: 'Электронная почта'
+    first_name: 'Имя'
+    middle_name: 'Отчество'
+    last_name: 'Фамилия'
+    passport_details: 'Паспортные данные'
+    train_number: 'Номер поезда'
+    start_station_title: 'Начельная станция'
+    end_station_title: 'Конечная станция'
+
+  activerecord:
+    models:
+      user: 'Пользователь'
+      attributes:
+        user:
+          email: 'Электронная почта'
+  common:
+    back: 'Назад'
+    edit: 'Редактировать'
+    show: 'Показать'
+    errors: 'При заполнении формы возниклиошибки'
+    new: 'Добавить'
+    delete: 'Удалить'
+    cancel_to_sale: 'Отменить покупку'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      form:
+        submit: '%{action} станцию'
+      index:
+        title: 'Станции'
+    routes:
+      form:
+        submit: '%{action} маршрут'

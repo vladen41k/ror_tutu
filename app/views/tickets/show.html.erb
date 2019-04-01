@@ -1,0 +1,13 @@
+<p><%= t('ticket.mail') %>: <%= @ticket.user.email %></p>
+<p><%= t('ticket.first_name') %>: <%= @ticket.first_name_id %></p>
+<p><%= t('ticket.middle_name') %>: <%= @ticket.middle_name_id %></p>
+<p><%= t('ticket.last_name') %>: <%= @ticket.last_name_id %></p>
+<p><%= t('ticket.passport_details') %>: <%= @ticket.passport_details_id %></p>
+<p><%= t('ticket.train_number') %>: <%= @ticket.train.number %></p>
+<p><%= t('ticket.start_station_title') %>: <%= @ticket.start_station.title %></p>
+<p><%= t('ticket.end_station_title') %>: <%= @ticket.end_station.title %></p>
+
+
+<%= link_to t('common.back'), tickets_path %>
+<%= link_to t('common.cancel_to_sale'), ticket_path(@ticket),
+            method: :delete, data: { confirm: "#{t('common.cancel_to_sale')}?" } %>

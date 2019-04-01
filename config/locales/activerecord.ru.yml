@@ -1,0 +1,37 @@
+ru:
+  activerecord:
+    models:
+      railway_stations: 'Станция'
+      train: 'Поезд'
+      route: 'Маршрут'
+      search: 'Поиск'
+      seats_carriage: 'Эллектричка'
+      sv_carriage: 'СВ'
+      coupe_carriage: 'Купе'
+      economy_carriage: 'Плацкард'
+      wagon: 'Вагон'
+      user: 'Пользователь'
+      ticket: 'Билет'
+    attributes:
+      railway_stations:
+        title: 'Название'
+      train:
+        number: 'Номер'
+        current_station: 'Текущая станция'
+      route:
+        name: 'Имя'
+      wagon:
+        number: 'Номер'
+        seats: 'Сидячие место (Только в эллектричках)'
+        top_seats: 'Верхняя полка'
+        bottom_seats: 'Нижняя полка'
+        side_top_seats: 'Верхняя полка боковая'
+        side_bottom_seats: 'Нижняя полка боковая'
+    errors:
+      messages:
+        blank: 'Не может быть пустым'
+      models:
+        railway_station:
+          attributes:
+            title:
+              blank: 'Должно быть указанно'

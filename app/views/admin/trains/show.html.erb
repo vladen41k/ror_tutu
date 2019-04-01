@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер поезда:</strong>
+  <%= @train.number %>
+</p>
+<p>
+  <strong>На станции:</strong>
+  <% if  @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    Не указанна станция
+  <% end %>
+</p>
+
+<p>
+  <strong>Текущий маршрут:</strong>
+  <% if  @train.route.present? %>
+    <%= @train.route.name %>
+  <% else %>
+    Маршрут отсутствует
+  <% end %>
+</p>
+
+<p>
+  <strong>Вагоны:</strong>
+</p>
+<% if  @train.boolean_sorted.any? %>
+  <ul>
+    <% @train.boolean_sorted.each do |w|%>
+      <li> <%= "#{w.number} - #{w.type}" %> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Вагон отсутствует</p>
+<% end %>
+<p>
+  <%=link_to "Добавить вагон", new_admin_train_wagon_path(@train) %>
+</p>
+
+
+
+
+
+
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

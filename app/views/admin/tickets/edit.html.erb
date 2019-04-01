@@ -1,0 +1,45 @@
+<h1><%= t('common.edit') %></h1>
+
+<%= form_with(model: [:admin, @ticket], local: true) do |form| %>
+
+  <%= render 'common/errors', resource: @ticket %>
+
+  <div class="field">
+    <%= form.label t('ticket.first_name') %>
+    <%= form.text_field :first_name_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label t('ticket.middle_name') %>
+    <%= form.text_field :middle_name_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label t('ticket.last_name') %>
+    <%= form.text_field :last_name_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label t('ticket.passport_details') %>
+    <%= form.text_field :passport_details_id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :train_id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :start_station_id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :end_station_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Создать' %>
+  </div>
+
+<% end %>
+
+<%= link_to t('common.back') , admin_tickets_path %>
