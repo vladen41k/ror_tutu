@@ -38,18 +38,8 @@ module Admin
       end
     end
 
-    # PATCH/PUT /railway_stations/1
-    # PATCH/PUT /railway_stations/1.json
     def update
-      respond_to do |format|
-        if @railway_station.update(railway_station_params)
-          format.html { redirect_to admin_railway_station_path, notice: 'Railway station was successfully updated.' }
-          format.js { render 'update.js.erb' }
-        else
-          format.html { render :edit }
-          format.json { render json: @railway_station.errors, status: :unprocessable_entity }
-        end
-      end
+      @railway_station.update(railway_station_params)
     end
 
     def update_position

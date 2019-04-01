@@ -1,6 +1,6 @@
-<%= form_with(model: [:admin, station], format: :js, html:
-    {style: "display: #{hidden ? 'none' : 'block'}", id: "edit_railway_station_#{station.id}" },
-              local: true ) do |form| %>
+<%= form_with(model: [:admin, station],
+              html:  {style: "display: #{hidden ? 'none' : 'block'}", id: "edit_railway_station_#{station.id}" },
+              ) do |form| %>
 
   <%= render 'common/errors', resource: station %>
 

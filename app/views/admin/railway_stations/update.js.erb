@@ -1,2 +1,1 @@
-form = $('#edit_railway_station_' + @railway_station.id);
-form.hide();
+$('#railway_station_' + <%= @railway_station.id %>).html( '<%= j render partial: 'railway_station', locals: {railway_station: @railway_station } %>');

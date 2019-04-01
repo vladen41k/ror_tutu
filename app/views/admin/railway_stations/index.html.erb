@@ -12,7 +12,9 @@
 
   <tbody>
     <% @railway_stations.each do |railway_station| %>
-       <%= render partial: 'railway_station', locals: {railway_station: railway_station} %>
+      <tr id="railway_station_<%= railway_station.id %>">
+        <%= render partial: 'railway_station', locals: {railway_station: railway_station} %>
+      </tr>
     <% end %>
   </tbody>
 </table>
